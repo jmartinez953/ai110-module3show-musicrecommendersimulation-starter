@@ -84,13 +84,14 @@ def score_song(user_prefs: Dict, song: Dict) -> Tuple[float, List[str]]:
         raise ValueError("User and song energy must be between 0 and 1.")
 
     if song_mood == preferred_mood:
-        score += 60.0
-        reasons.append(f"Mood match: {song_mood} (+60.00)")
+        score += 70.0
+        reasons.append(f"Mood match: {song_mood} (+70.00)")
     else:
         reasons.append(f"Mood mismatch: {song_mood} vs {preferred_mood} (+0.00)")
 
+
     energy_distance = abs(song_energy - target_energy)
-    energy_points = 40.0 * (1.0 - energy_distance)
+    energy_points = 30.0 * (1.0 - energy_distance)
     score += energy_points
     reasons.append(
         f"Energy distance: {energy_distance:.2f} (+{energy_points:.2f})"
